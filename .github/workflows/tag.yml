@@ -12,7 +12,7 @@ on:
 
 env:
   VERSION_FILE: "version.ini"
-  PYTHON_EMBEDDED_VERSION: 3.7.9
+  PYTHON_EMBEDDED_VERSION: 3.9.0
 
 # A workflow run is made up of one or more jobs that can run sequentially or in parallel
 jobs:
@@ -113,12 +113,6 @@ jobs:
       run: |
         cd rdm
         cd ./src && cp ./resources/Info.plist.sample ./resources/Info.plist
-    
-    - name: setup python
-      run: |
-        brew unlink python@3.9
-        brew install python@3.8
-        brew link --overwrite python@3.8
     
     # 使用私有库,egg-links时-t不能同时使用，--user解决权限问题
     # https://github.com/UnitedIncome/serverless-python-requirements/issues/240
